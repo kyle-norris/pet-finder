@@ -13,13 +13,13 @@ const PetCard = (props) => {
     }
       
       }>
-    <Card className={styles.card}>
-      <img src={props.image} alt={props.name} className={styles.petImage}/>
-      <Card.Content>
-        <Card.Header className={styles.cardHeader}>{props.name}</Card.Header>
-        <Card.Description>{props.description}</Card.Description>
-      </Card.Content>
-    </Card>
+      <Card className={styles.card}>
+        <img src={props.animal.photos[0].medium} alt={props.animal.name} className={styles.petImage}/>
+        <Card.Content>
+          <Card.Header className={styles.cardHeader}>{props.animal.name}</Card.Header>
+          <Card.Description>{props.animal.description}</Card.Description>
+        </Card.Content>
+      </Card>
     </Link>
     
   )

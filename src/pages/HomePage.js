@@ -1,8 +1,8 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import axios from 'axios';
-import PetCard from '../components/PetCard';
-import { Card } from 'semantic-ui-react';
+import PetList from '../components/PetList';
+import { Divider } from 'semantic-ui-react';
 
 const initial_pets = {
   animals: [
@@ -31,7 +31,7 @@ const HomePage = () => {
     });
   }, [])
 
-  // use a GET request to get the animals
+  // use a GET request to get the animals after we receive the token
   useEffect(() => {
     if (token !== 'Fake Token') {
       axios.get(`https://api.petfinder.com/v2/animals?type=rabbit&location=Raleigh, NC&page=1`, {
@@ -52,22 +52,8 @@ const HomePage = () => {
   if (!isLoading && pets.animals.length > 0) {
     return (
       <>
-      <Card.Group centered>
-        {pets.animals.map((animal, index) => {
-        return (
-          
-          <PetCard 
-            index={index}
-            name={animal.name}
-            image={animal.photos[0].medium}
-            description={animal.description}
-            animal={animal}
-          />
-        
-        )
-      })}
-      </Card.Group>
-      
+      <Divider hidden></Divider>
+      <PetList animals={pets.animals}/>
       </>
     )
   }
