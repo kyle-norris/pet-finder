@@ -2,8 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import axios from 'axios';
 import PetCard from '../components/PetCard';
-import { Link } from "react-router-dom";
-import { Grid, Card } from 'semantic-ui-react';
+import { Card } from 'semantic-ui-react';
 
 const initial_pets = {
   animals: [
@@ -58,9 +57,11 @@ const HomePage = () => {
         return (
           
           <PetCard 
+            index={index}
             name={animal.name}
             image={animal.photos[0].medium}
             description={animal.description}
+            animal={animal}
           />
         
         )
