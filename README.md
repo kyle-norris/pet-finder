@@ -2,7 +2,7 @@
 
 ## Live Site
 This project is deployed via Github Pages, and is viewable at the following address:
-https://kyle-norris.github.io/pet_finder/
+https://kyle-norris.github.io/pet-finder/
 
 
 ## About
