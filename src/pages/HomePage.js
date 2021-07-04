@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios';
 import PetCard from '../components/PetCard';
 import { Link } from "react-router-dom";
+import { Grid, Card } from 'semantic-ui-react';
 
 const initial_pets = {
   animals: [
@@ -52,8 +53,10 @@ const HomePage = () => {
   if (!isLoading && pets.animals.length > 0) {
     return (
       <>
-      {pets.animals.map((animal, index) => {
+      <Card.Group centered>
+        {pets.animals.map((animal, index) => {
         return (
+          
           <PetCard 
             name={animal.name}
             image={animal.photos[0].medium}
@@ -62,6 +65,8 @@ const HomePage = () => {
         
         )
       })}
+      </Card.Group>
+      
       </>
     )
   }

@@ -1,3 +1,13 @@
 .petImage {
   object-fit: cover;
+  height: 200px;
+  width: auto;
+}
+
+.cardHeader {
+  height: 30px;
+}
+
+.card {
+  height: 340px;
 }
