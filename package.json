@@ -1,6 +1,6 @@
 {
   "name": "pet-finder-react",
-  "homepage": "https://kyle-norris.github.io/pet-finder/",
+  "homepage": "https://kyle-norris.github.io/pet-finder",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

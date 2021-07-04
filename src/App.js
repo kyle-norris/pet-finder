@@ -1,7 +1,7 @@
 import './App.css';
 import {BrowserRouter as Router, Route} from "react-router-dom"
 import HomePage from './pages/HomePage';
-import PetDetails from "./components/PetDetails";
+import PetDetails from "./pages/PetDetails";
 import 'semantic-ui-css/semantic.min.css';
 
 

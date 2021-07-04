@@ -1,0 +1,16 @@
+.imageContainer {
+  height: 300px;
+  width: 500px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.mainImage {
+  object-fit: cover;
+  height: 400px;
+  width: 500px;
+}
+
+.container {
+  height: 600px;
+}
