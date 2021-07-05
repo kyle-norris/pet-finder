@@ -9,7 +9,7 @@ function App() {
 
   return (
     <>
-    <Router>
+    <Router basename="/pet-finder">
       <Route exact path="/" component={HomePage} />
       <Route path="/pet/:petID" component={PetDetailsPage} />
     </Router>
