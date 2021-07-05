@@ -8,10 +8,10 @@ const PetList = (props) => {
     <Card.Group centered>
         {props.animals.map((animal, index) => {
         return (
-          <Card>
+          <Card key={index}>
             <PetCard 
-            index={index}
             animal={animal}
+            token={props.token}
           />
           </Card>
           

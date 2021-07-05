@@ -13,4 +13,15 @@
 
 .container {
   height: 600px;
+  justify-content: center;
+}
+
+.table {
+  max-width: 500px;
+}
+
+.tableContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 100px;
 }

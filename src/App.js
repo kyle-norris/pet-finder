@@ -1,7 +1,7 @@
 import './App.css';
 import {BrowserRouter as Router, Route} from "react-router-dom"
 import HomePage from './pages/HomePage';
-import PetDetails from "./pages/PetDetails";
+import PetDetailsPage from "./pages/PetDetailsPage";
 import 'semantic-ui-css/semantic.min.css';
 
 
@@ -11,7 +11,7 @@ function App() {
     <>
     <Router>
       <Route exact path="/" component={HomePage} />
-      <Route path="/pet/:petID" component={PetDetails} />
+      <Route path="/pet/:petID" component={PetDetailsPage} />
     </Router>
     </>
   );
