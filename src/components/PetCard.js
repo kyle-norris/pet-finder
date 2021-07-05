@@ -8,7 +8,7 @@ const PetCard = (props) => {
 
   return (
     <Link to={{
-      pathname: `/pet/${props.index}`,
+      pathname: `/pet/${props.animal.id}`,
       state: {
         animalID: props.animal.id,
         token: props.token
