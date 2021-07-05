@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/pet-finder/static/css/main.15569d3b.chunk.css",
-    "main.js": "/pet-finder/static/js/main.19554a4a.chunk.js",
-    "main.js.map": "/pet-finder/static/js/main.19554a4a.chunk.js.map",
+    "main.js": "/pet-finder/static/js/main.3533954a.chunk.js",
+    "main.js.map": "/pet-finder/static/js/main.3533954a.chunk.js.map",
     "runtime-main.js": "/pet-finder/static/js/runtime-main.b5143612.js",
     "runtime-main.js.map": "/pet-finder/static/js/runtime-main.b5143612.js.map",
     "static/css/2.2cecca75.chunk.css": "/pet-finder/static/css/2.2cecca75.chunk.css",
@@ -21,6 +21,6 @@
     "static/css/2.2cecca75.chunk.css",
     "static/js/2.908a9f77.chunk.js",
     "static/css/main.15569d3b.chunk.css",
-    "static/js/main.19554a4a.chunk.js"
+    "static/js/main.3533954a.chunk.js"
   ]
 }
