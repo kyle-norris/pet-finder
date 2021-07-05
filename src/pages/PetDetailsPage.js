@@ -1,13 +1,12 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router'
 import { Header, Segment, Image, Divider, Table, Label, Container, List } from 'semantic-ui-react'
-import * as styles from "./PetDetailsPage.module.css"
-import axios from 'axios';
+import * as styles from './PetDetailsPage.module.css'
+import axios from 'axios'
 
 const PetDetails = () => {
-
-  const [animal, setAnimal] = useState();
-  const [isLoading, setIsLoading] = useState(true);
+  const [animal, setAnimal] = useState()
+  const [isLoading, setIsLoading] = useState(true)
 
   const location = useLocation()
   const { animalID, token } = location.state
@@ -25,19 +24,18 @@ const PetDetails = () => {
           console.log(response.data.animal)
         })
         .catch(error => {
-          console.log('There was an error getting the pet details!', error);
-      })
+          console.log('There was an error getting the pet details!', error)
+        })
     }
   }, [animalID, token])
 
   if (isLoading === false) {
-      return (
+    return (
       <Segment vertical textAlign='center' className={styles.container}>
         <Header as='h1'>{animal.name} ({animal.status})</Header>
-        { animal.photos[0] !== undefined ?
-          <Image src={animal.photos[0].large} className={styles.mainImage} alt={animal.name} centered></Image>
-        :
-          <div className={styles.petImage}>
+        { animal.photos[0] !== undefined
+          ? <Image src={animal.photos[0].large} className={styles.mainImage} alt={animal.name} centered></Image>
+          : <div className={styles.petImage}>
             No Photo Available
           </div>
         }
@@ -45,7 +43,7 @@ const PetDetails = () => {
 
         <Label.Group>
           {animal.tags.map((tag, index) => {
-            return(
+            return (
               <Label color='blue' key={index}>
                 {tag}
               </Label>
@@ -58,7 +56,6 @@ const PetDetails = () => {
         <Container>
           {animal.description}
         </Container>
-
 
         <Divider hidden section>
           <Header>
@@ -125,7 +122,7 @@ const PetDetails = () => {
             </Table.Body>
           </Table>
         </div>
-        
+
         <Divider hidden section>
           <Header>
             Contact
@@ -145,9 +142,6 @@ const PetDetails = () => {
             </List.Item>
           </List>
         </div>
-        
-
-        
 
       </Segment>
     )
@@ -156,7 +150,6 @@ const PetDetails = () => {
       <h1>Loading...</h1>
     )
   }
-  
 }
 
 export default PetDetails
