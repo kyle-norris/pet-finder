@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import { useLocation } from 'react-router'
-import { Header, Segment, Image, Divider, Table, Label, Container } from 'semantic-ui-react'
+import { Header, Segment, Image, Divider, Table, Label, Container, List } from 'semantic-ui-react'
 import * as styles from "./PetDetailsPage.module.css"
 import axios from 'axios';
 
@@ -34,8 +34,13 @@ const PetDetails = () => {
       return (
       <Segment vertical textAlign='center' className={styles.container}>
         <Header as='h1'>{animal.name} ({animal.status})</Header>
-        <Image src={animal.photos[0].large} className={styles.mainImage} alt={animal.name} centered></Image>
-
+        { animal.photos[0] !== undefined ?
+          <Image src={animal.photos[0].large} className={styles.mainImage} alt={animal.name} centered></Image>
+        :
+          <div className={styles.petImage}>
+            No Photo Available
+          </div>
+        }
         <Divider hidden />
 
         <Label.Group>
@@ -121,14 +126,34 @@ const PetDetails = () => {
           </Table>
         </div>
         
+        <Divider hidden section>
+          <Header>
+            Contact
+          </Header>
+        </Divider>
+
+        <div className={styles.contactInfo}>
+          <List>
+            <List.Item>
+              <List.Content>{animal.contact.email}</List.Content>
+            </List.Item>
+            <List.Item>
+              <List.Content>{animal.contact.phone}</List.Content>
+            </List.Item>
+            <List.Item>
+              <List.Content>{animal.contact.address.address1} {animal.contact.address.city}, {animal.contact.address.state} {animal.contact.address.postcode}</List.Content>
+            </List.Item>
+          </List>
+        </div>
         
+
+        
+
       </Segment>
     )
   } else {
     return (
-      <div>
-        Loading...
-      </div>
+      <h1>Loading...</h1>
     )
   }
   

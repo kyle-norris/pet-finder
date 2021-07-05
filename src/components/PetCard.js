@@ -4,6 +4,8 @@ import * as styles from "./PetCard.module.css"
 import { Link } from "react-router-dom";
 
 const PetCard = (props) => {
+
+
   return (
     <Link to={{
       pathname: `/pet/${props.index}`,
@@ -15,7 +17,15 @@ const PetCard = (props) => {
       
       }>
       <Card className={styles.card}>
-        <img src={props.animal.photos[0].medium} alt={props.animal.name} className={styles.petImage}/>
+        { props.animal.photos[0] !== undefined ?
+          <img src={props.animal.photos[0].medium} alt={props.animal.name} className={styles.petImage}/>
+          :
+          <div className={styles.petImage}>
+            No Photo Available
+          </div>
+        }
+        
+        
         <Card.Content>
           <Card.Header className={styles.cardHeader}>{props.animal.name}</Card.Header>
           <Card.Description>{props.animal.description}</Card.Description>

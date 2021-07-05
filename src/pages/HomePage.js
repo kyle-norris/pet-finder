@@ -1,8 +1,9 @@
 import React from 'react'
-import { useState, useEffect } from 'react'
+import { useState, useEffect} from 'react'
 import axios from 'axios';
 import PetList from '../components/PetList';
-import { Divider } from 'semantic-ui-react';
+import { Divider, Dropdown, Header } from 'semantic-ui-react';
+import * as styles from "./HomePage.module.css"
 
 // Used for initial rendering
 const initial_pets = {
@@ -10,16 +11,30 @@ const initial_pets = {
   ]
 }
 
-// Pet Types
-const petTypes = ['Rabbit', 'Dog', 'Cat', 'Horse', 'Bird', 'Scales, Fins & Other', 'Barnyard']
+const petTypes = [
+  {key: 'Rabbit', value: 'Rabbit', text: 'Rabbit'},
+  {key: 'Dog', value: 'Dog', text: 'Dog'},
+  {key: 'Cat', value: 'Cat', text: 'Cat'},
+  {key: 'Horse', value: 'Horse', text: 'Horse'},
+  {key: 'Bird', value: 'Bird', text: 'Bird'},
+  {key: 'Scales, Fins & Other', value: 'Scales, Fins & Other', text: 'Scales, Fins & Other'},
+  {key: 'Barnyard', value: 'Barnyard', text: 'Barnyard'},
+]
 
+const locations = [
+  { key: 'Raleigh, NC', value: 'Raleigh, NC', text: 'Raleigh, NC'},
+  { key: 'Charlotte, NC', value: 'Charlotte, NC', text: 'Charlotte, NC'},
+  { key: 'Durham, NC', value: 'Durham, NC', text: 'Durham, NC'}
+]
 
 const HomePage = () => {
-  const [token, setToken] = useState('Fake Token');
+  // Set states for the homepage
+  const [token, setToken] = useState('Fake Token'); //used for authentication
   const [pets, setPets] = useState(initial_pets);
   const [isLoading, setIsLoading] = useState(true);
-  const [location, setLocation] = useState('Raleigh, NC')
+  const [location, setLocation] = useState(locations[0])
   const [petType, setPetType] = useState(petTypes[0])
+
 
   // Get the token used for authentication
   useEffect(() => {
@@ -41,7 +56,7 @@ const HomePage = () => {
   // use a GET request to get the animals after we receive the token
   useEffect(() => {
     if (token !== 'Fake Token') {
-      axios.get(`https://api.petfinder.com/v2/animals?type=${petType}&location=${location}&page=1`, {
+      axios.get(`https://api.petfinder.com/v2/animals?type=${petType.value}&location=${location.value}&page=1`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -56,15 +71,35 @@ const HomePage = () => {
     }
   }, [token, location, petType])
 
+  function handleLocationChange(e, data) {
+    const newLocation = locations.find(x=> x.key === data.value)
+    setLocation(newLocation)
+  }
+
+  function handlePetTypeChanged(e, data) {
+    const newPetType = petTypes.find(x=> x.key === data.value)
+    setPetType(newPetType)
+  }
+
   if (!isLoading && pets.animals.length > 0) {
     return (
       <>
-      <Divider hidden></Divider>
-      <PetList animals={pets.animals} token={token}/>
+        <div className={styles.heading}>
+          <Header as='h1' textAlign='center'>Pet Finder App</Header>
+        </div>
+        
+        <div className={styles.dropdownContainer}>
+          <Dropdown search fluid selection value={location.text} onChange={handleLocationChange} options={locations}/>
+          <Dropdown search fluid selection value={petType.text} onChange={handlePetTypeChanged} options={petTypes}/>
+        </div>
+        
+        <Divider hidden></Divider>
+        <PetList animals={pets.animals} token={token}/>
       </>
     )
   }
   return <h1>Loading...</h1>
 }
+
 
 export default HomePage

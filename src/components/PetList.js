@@ -1,5 +1,4 @@
 import React from 'react'
-import * as styles from "./PetList.module.css"
 import { Card } from 'semantic-ui-react'
 import PetCard from '../components/PetCard';
 
